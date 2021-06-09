@@ -1,22 +1,40 @@
 {
     "name": "yaodem/sendthen-php-sdk",
-    "description": "SendThen REST API client for PHP",
+    "version": "0.0.1",
+    "description": "",
     "type": "library",
+    "homepage": "https://github.com/yaodem/sendthen-php-sdk",
+    "support": {
+        "issues": "https://github.com/yaodem/sendthen-php-sdk/issues",
+        "source": "https://github.com/yaodem/sendthen-php-sdk"
+    },
     "require": {
-        "ext-json": "^7.4",
+        "php": "^7.4",
+        "guzzlehttp/guzzle": "^7.3",
         "ext-curl": "^7.4",
-        "php": "^7.4"
+        "ext-json": "^7.4"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.6",
+        "vlucas/phpdotenv": "^5.3",
         "phpunit/phpunit": "^9.5",
-        "vlucas/phpdotenv": "^5.3"
+        "squizlabs/php_codesniffer": "^3.6"
     },
-    "license": "BSD-2-Clause",
+    "license": "MIT",
     "authors": [
         {
             "name": "Denis AKPAGNONITE",
-            "email": "denisakp@yaodem.com"
+            "email": "akpagnonited@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "SendThen\\": "src/SendThen/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable"
 }
