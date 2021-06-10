@@ -26,7 +26,7 @@ trait FindAll
             'sort' => $sort,
         ];
 
-        $result = $this->connection()->get($this->getEndpoint() . '.list', array_filter($attributes));
+        $result = $this->connection()->get($this->getEndpoint(), array_filter($attributes));
 
         return $this->collectionFromResult($result);
     }
@@ -44,7 +44,7 @@ trait FindAll
             'sort' => $sort,
         ];
 
-        $result = $this->connection()->get($this->getEndpoint() . '.list', array_filter($attributes), true);
+        $result = $this->connection()->get($this->getEndpoint(), array_filter($attributes), true);
 
         return $this->collectionFromResult($result);
     }

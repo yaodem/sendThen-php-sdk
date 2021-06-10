@@ -14,7 +14,7 @@ trait FindById
      */
     public function findById(): bool
     {
-        $result = $this->connection()->post($this->getEndpoint() . '.info', $this->jsonWithNamespace());
+        $result = $this->connection()->post($this->getEndpoint(), $this->jsonWithNamespace());
 
         if($result === 200)
         {

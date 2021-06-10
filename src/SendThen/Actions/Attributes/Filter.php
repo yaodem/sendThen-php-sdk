@@ -63,8 +63,4 @@ class Filter implements \JsonSerializable
     {
         return !(count($this->fillable) > 0) || in_array($key, $this->fillable);
     }
-
-
-
-
 }

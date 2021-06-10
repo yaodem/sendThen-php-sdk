@@ -4,6 +4,8 @@
 namespace SendThen\Actions\Attributes;
 
 
+use LogicException;
+
 class Sort implements \JsonSerializable
 {
     public const ORDER_ASC = 'asc';
@@ -33,7 +35,7 @@ class Sort implements \JsonSerializable
     {
         if($this->singleFieldSort)
         {
-            throw new \LogicException('You can only sort one item when singleFieldSort is set to true');
+            throw new LogicException('You can only sort one item when singleFieldSort is set to true');
         }
 
         return ($this->isFillable($field) && $this->isValidOrder($order))
@@ -62,9 +64,9 @@ class Sort implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getSingleFieldSort()
+    public function getSingleFieldSort(): bool
     {
         return $this->singleFieldSort;
     }

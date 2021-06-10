@@ -29,7 +29,7 @@ trait Storable
             $action = $this->createAction;
         }
 
-        $result = $this->connection()->post($this->getEndpoint() . '.' . $action, $this->jsonWithNamespace());
+        $result = $this->connection()->post($this->getEndpoint(), $this->jsonWithNamespace());
 
         return $this->selfFromResponse($result);
     }
@@ -41,7 +41,7 @@ trait Storable
      */
     public function update()
     {
-        $result = $this->connection()->post($this->getEndpoint() . '.update', $this->jsonWithNamespace());
+        $result = $this->connection()->post($this->getEndpoint(), $this->jsonWithNamespace());
         return $this;
     }
 
