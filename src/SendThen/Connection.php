@@ -57,22 +57,15 @@ class Connection
     /**
      * @param string $method
      * @param string $endPoint
-     * @param array|null $body
+     * @param null $body
      * @param array $params
      * @param array $headers
      * @return Request
      * @throws SendThenException
      */
-    private function sendRequest(
-        string $method = 'GET',
-        string $endPoint,
-        array $body,
-        array $params,
-        array $headers
-    ): Request
+    private function sendRequest(string $method = 'GET', string $endPoint, $body = null, array $params = [], array $headers = []): Request
     {
-        $_headers = array_merge(
-            $headers,
+        $_headers = array_merge($headers,
             [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
