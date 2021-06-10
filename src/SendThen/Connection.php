@@ -1,7 +1,7 @@
 <?php
 
 
-namespace SendThen\Http;
+namespace SendThen;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
@@ -9,7 +9,6 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 
 use SendThen\Actions\Attributes\Page;
-use SendThen\Version;
 use SendThenException;
 
 

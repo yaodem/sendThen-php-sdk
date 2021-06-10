@@ -4,14 +4,16 @@
 namespace SendThen;
 
 
+use JsonSerializable;
 use SendThen\Entities\Balance;
 use SendThen\Entities\BulkSms;
 use SendThen\Entities\Group;
 use SendThen\Entities\SenderId;
 use SendThen\Entities\Template;
-use SendThen\Http\Connection;
+use SendThenException;
+use StdClass;
 
-abstract class Model implements \JsonSerializable
+abstract class Model implements JsonSerializable
 {
     const NESTING_TYPE_ARRAY_OF_OBJECTS = 0;
     const NESTING_TYPE_NESTED_OBJECTS = 1;
@@ -33,7 +35,7 @@ abstract class Model implements \JsonSerializable
     protected string $namespace = '';
     protected array $singleNestedEntities = [];
     protected array $multipleNestedEntities = [];
-    protected $isLoaded;
+    protected bool $isLoaded;
 
     /**
      * Model constructor.
@@ -146,7 +148,7 @@ abstract class Model implements \JsonSerializable
 
             try {
                 $this->findById();
-            } catch (\SendThenException $apiException) {
+            } catch (SendThenException $apiException) {
                 $this->isLoaded = true;
             }
         }
@@ -243,7 +245,7 @@ abstract class Model implements \JsonSerializable
                     $multipleNestedEntities[$attributeName]['type'] === self::NESTING_TYPE_NESTED_OBJECTS
                     && empty($result[$attributeNameToUse])
                 ) {
-                    $result[$attributeNameToUse] = new \StdClass();
+                    $result[$attributeNameToUse] = new StdClass();
                 }
             }
         }
@@ -309,7 +311,7 @@ abstract class Model implements \JsonSerializable
 
         // If we have one result which is not an assoc array, make it the first element of an array for the
         // collectionFromResult function so we always return a collection from filter
-        if ((bool) count(array_filter(array_keys($result), 'is_string'))) {
+        if (count(array_filter(array_keys($result), 'is_string'))) {
             $result = [$result];
         }
 

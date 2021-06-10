@@ -9,7 +9,9 @@ use SendThen\Entities\BulkSms;
 use SendThen\Entities\Group;
 use SendThen\Entities\SenderId;
 use SendThen\Entities\Template;
-use SendThen\Http\Connection;
+use SendThen\Connection;
+
+
 
 class Client
 {
@@ -68,6 +70,4 @@ class Client
     {
         return new BulkSms($this->connection, $attributes);
     }
-
-
 }
