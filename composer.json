@@ -1,6 +1,6 @@
 {
     "name": "yaodem/sendthen-php-sdk",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "SendThen REST API client for PHP",
     "type": "library",
     "keywords": [
@@ -42,5 +42,11 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
 }
