@@ -1,8 +1,14 @@
 {
     "name": "yaodem/sendthen-php-sdk",
     "version": "0.0.1",
-    "description": "",
+    "description": "SendThen REST API client for PHP",
     "type": "library",
+    "keywords": [
+        "yaodem",
+        "sendthen",
+        "sms",
+        "api"
+    ],
     "homepage": "https://github.com/yaodem/sendthen-php-sdk",
     "support": {
         "issues": "https://github.com/yaodem/sendthen-php-sdk/issues",
