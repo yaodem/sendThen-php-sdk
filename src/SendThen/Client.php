@@ -9,8 +9,6 @@ use SendThen\Entities\BulkSms;
 use SendThen\Entities\Group;
 use SendThen\Entities\SenderId;
 use SendThen\Entities\Template;
-use SendThen\Connection;
-
 
 
 class Client
