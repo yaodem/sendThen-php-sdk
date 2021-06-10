@@ -9,7 +9,6 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 
 use SendThen\Actions\Attributes\Page;
-use SendThen\Authentication\AccessTokenAuth;
 use SendThen\Version;
 use SendThenException;
 
@@ -21,27 +20,26 @@ class Connection
     const INVALID_ACCESS_TOKEN_DESCRIPTION = 'Invalid access Token';
     const TIME_OUT = 10;
 
-    protected AccessTokenAuth $accessToken;
+    protected string $accessToken;
 
     protected string $clientId;
 
     private Client $client;
 
-
     /**
      * Connection constructor.
-     * @param AccessTokenAuth $accessToken
+     * @param string $accessToken
      */
-    public function __construct(AccessTokenAuth $accessToken)
+    public function __construct(string $accessToken)
     {
         $this->client();
-        $this->accessToken = $accessToken;
+        $this->accessToken = $accessToken?:getenv('SENDTHEN_ACCESS_TOKEN');
     }
 
     /**
-     * @return AccessTokenAuth
+     * @return array|false|string
      */
-    public function getAccessToken(): AccessTokenAuth
+    public function getAccessToken()
     {
         return $this->accessToken;
     }
@@ -205,7 +203,8 @@ class Connection
         $this->client = new Client(
             [
                 'http_errors' => true,
-                'expect' => false,            ]
+                'expect' => false
+            ]
         );
 
         return $this->client;
